@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ServiceAppDemo.Models.usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Esta_Usua_clien.DescripTip_U_C)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rol.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departamento.descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Esta_Usua_clien.DescripTip_U_C)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rol.descripcion)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.codigo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.codigo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.codigo })
+        </td>
+    </tr>
+}
+
+</table>

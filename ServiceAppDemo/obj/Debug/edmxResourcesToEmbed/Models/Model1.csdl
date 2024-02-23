@@ -1,0 +1,560 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ServiceAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="caso">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="codigo_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="relevancia" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="tipo_caso" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="id_queja" Type="Int32" />
+    <Property Name="id_reclamo" Type="Int32" />
+    <Property Name="id_departamento" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="0" />
+    <Property Name="Comentario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="estatus" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK__caso__codigo_usu__60A75C0F" FromRole="caso" ToRole="usuario" />
+    <NavigationProperty Name="Estatu" Relationship="Self.FK__caso__estatus__6A30C649" FromRole="caso" ToRole="Estatus" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__caso__id_cliente__5DCAEF64" FromRole="caso" ToRole="cliente" />
+    <NavigationProperty Name="queja" Relationship="Self.FK__caso__id_queja__5FB337D6" FromRole="caso" ToRole="queja" />
+    <NavigationProperty Name="reclamo" Relationship="Self.FK__caso__id_reclamo__5EBF139D" FromRole="caso" ToRole="reclamo" />
+    <NavigationProperty Name="Relevancia1" Relationship="Self.FK__caso__relevancia__6B24EA82" FromRole="caso" ToRole="Relevancias" />
+    <NavigationProperty Name="Tipo_Caso1" Relationship="Self.FK__caso__tipo_caso__693CA210" FromRole="caso" ToRole="Tipo_Caso" />
+    <NavigationProperty Name="solucions" Relationship="Self.FK__solucion__id_cas__6754599E" FromRole="caso" ToRole="solucion" />
+    <NavigationProperty Name="valoracion_respuesta" Relationship="Self.FK__valoracio__id_ca__6D0D32F4" FromRole="caso" ToRole="valoracion_respuesta" />
+    <NavigationProperty Name="departamento" Relationship="Self.FK_User__depart" FromRole="caso" ToRole="departamento" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="clave" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="cedula" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="fecha_registro" Type="DateTime" Precision="0" />
+    <Property Name="correo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="estatus" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="monto" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="telefono" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__id_cliente__5DCAEF64" FromRole="cliente" ToRole="caso" />
+    <NavigationProperty Name="Esta_Usua_clien" Relationship="Self.FK__cliente__estatus__66603565" FromRole="cliente" ToRole="Esta_Usua_clien" />
+    <NavigationProperty Name="producto_cliente" Relationship="Self.FK__producto___id_cl__5CD6CB2B" FromRole="cliente" ToRole="producto_cliente" />
+    <NavigationProperty Name="valoracion_respuesta" Relationship="Self.FK__valoracio__id_cl__6C190EBB" FromRole="cliente" ToRole="valoracion_respuesta" />
+  </EntityType>
+  <EntityType Name="departamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK_User__depart" FromRole="departamento" ToRole="caso" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK__usuario__Id_depa__5AEE82B9" FromRole="departamento" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="Esta_Usua_clien">
+    <Key>
+      <PropertyRef Name="CodTip_U_C" />
+    </Key>
+    <Property Name="CodTip_U_C" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DescripTip_U_C" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="clientes" Relationship="Self.FK__cliente__estatus__66603565" FromRole="Esta_Usua_clien" ToRole="cliente" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK__usuario__estatus__656C112C" FromRole="Esta_Usua_clien" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="Estatu">
+    <Key>
+      <PropertyRef Name="CodEst" />
+    </Key>
+    <Property Name="CodEst" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DescripEst" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__estatus__6A30C649" FromRole="Estatus" ToRole="caso" />
+  </EntityType>
+  <EntityType Name="modulo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Operacions" Relationship="Self.FK__Operacion__idMod__59063A47" FromRole="modulo" ToRole="Operacion" />
+  </EntityType>
+  <EntityType Name="Operacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="idModulo" Type="Int32" />
+    <NavigationProperty Name="modulo" Relationship="Self.FK__Operacion__idMod__59063A47" FromRole="Operacion" ToRole="modulo" />
+    <NavigationProperty Name="Rol_Operacion" Relationship="Self.FK__Rol_Opera__idOpe__5812160E" FromRole="Operacion" ToRole="Rol_Operacion" />
+  </EntityType>
+  <EntityType Name="producto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="monto" Type="Decimal" Precision="14" Scale="10" />
+    <NavigationProperty Name="producto_cliente" Relationship="Self.FK__producto___id_pr__5BE2A6F2" FromRole="producto" ToRole="producto_cliente" />
+  </EntityType>
+  <EntityType Name="producto_cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_producto" Type="Int32" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__producto___id_cl__5CD6CB2B" FromRole="producto_cliente" ToRole="cliente" />
+    <NavigationProperty Name="producto" Relationship="Self.FK__producto___id_pr__5BE2A6F2" FromRole="producto_cliente" ToRole="producto" />
+  </EntityType>
+  <EntityType Name="queja">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__id_queja__5FB337D6" FromRole="queja" ToRole="caso" />
+  </EntityType>
+  <EntityType Name="reclamo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__id_reclamo__5EBF139D" FromRole="reclamo" ToRole="caso" />
+  </EntityType>
+  <EntityType Name="Relevancia">
+    <Key>
+      <PropertyRef Name="CodRel" />
+    </Key>
+    <Property Name="CodRel" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DescripRel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__relevancia__6B24EA82" FromRole="Relevancias" ToRole="caso" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Rol_Operacion" Relationship="Self.FK__Rol_Opera__idrol__571DF1D5" FromRole="Rol" ToRole="Rol_Operacion" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK__usuario__idroll__59FA5E80" FromRole="Rol" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="Rol_Operacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idrol" Type="Int32" />
+    <Property Name="idOperacion" Type="Int32" />
+    <NavigationProperty Name="Operacion" Relationship="Self.FK__Rol_Opera__idOpe__5812160E" FromRole="Rol_Operacion" ToRole="Operacion" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK__Rol_Opera__idrol__571DF1D5" FromRole="Rol_Operacion" ToRole="Rol" />
+  </EntityType>
+  <EntityType Name="solucion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_caso" Type="Int32" />
+    <Property Name="ComenSolu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="caso" Relationship="Self.FK__solucion__id_cas__6754599E" FromRole="solucion" ToRole="caso" />
+  </EntityType>
+  <EntityType Name="Tipo_Caso">
+    <Key>
+      <PropertyRef Name="CodTip" />
+    </Key>
+    <Property Name="CodTip" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DescripTip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__tipo_caso__693CA210" FromRole="Tipo_Caso" ToRole="caso" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="clave" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="estatus" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="Id_departamento" Type="Int32" />
+    <Property Name="cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="idroll" Type="Int32" />
+    <Property Name="fecha" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="casoes" Relationship="Self.FK__caso__codigo_usu__60A75C0F" FromRole="usuario" ToRole="caso" />
+    <NavigationProperty Name="departamento" Relationship="Self.FK__usuario__Id_depa__5AEE82B9" FromRole="usuario" ToRole="departamento" />
+    <NavigationProperty Name="Esta_Usua_clien" Relationship="Self.FK__usuario__estatus__656C112C" FromRole="usuario" ToRole="Esta_Usua_clien" />
+    <NavigationProperty Name="Rol" Relationship="Self.FK__usuario__idroll__59FA5E80" FromRole="usuario" ToRole="Rol" />
+    <NavigationProperty Name="valoracion_respuesta" Relationship="Self.FK__valoracio__id_us__6E01572D" FromRole="usuario" ToRole="valoracion_respuesta" />
+    <Property Name="TipoUser" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="valoracion_respuesta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_caso" Type="Int32" />
+    <Property Name="id_cliente" Type="Int32" />
+    <Property Name="id_usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="valor" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="caso" Relationship="Self.FK__valoracio__id_ca__6D0D32F4" FromRole="valoracion_respuesta" ToRole="caso" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__valoracio__id_cl__6C190EBB" FromRole="valoracion_respuesta" ToRole="cliente" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK__valoracio__id_us__6E01572D" FromRole="valoracion_respuesta" ToRole="usuario" />
+  </EntityType>
+  <Association Name="FK__caso__codigo_usu__60A75C0F">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="codigo_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caso__estatus__6A30C649">
+    <End Role="Estatus" Type="Self.Estatu" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estatus">
+        <PropertyRef Name="CodEst" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caso__id_cliente__5DCAEF64">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caso__id_queja__5FB337D6">
+    <End Role="queja" Type="Self.queja" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="queja">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="id_queja" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caso__id_reclamo__5EBF139D">
+    <End Role="reclamo" Type="Self.reclamo" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reclamo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="id_reclamo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caso__relevancia__6B24EA82">
+    <End Role="Relevancias" Type="Self.Relevancia" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Relevancias">
+        <PropertyRef Name="CodRel" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="relevancia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caso__tipo_caso__693CA210">
+    <End Role="Tipo_Caso" Type="Self.Tipo_Caso" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Caso">
+        <PropertyRef Name="CodTip" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="tipo_caso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__solucion__id_cas__6754599E">
+    <End Role="caso" Type="Self.caso" Multiplicity="0..1" />
+    <End Role="solucion" Type="Self.solucion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caso">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="solucion">
+        <PropertyRef Name="id_caso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__valoracio__id_ca__6D0D32F4">
+    <End Role="caso" Type="Self.caso" Multiplicity="0..1" />
+    <End Role="valoracion_respuesta" Type="Self.valoracion_respuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caso">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="valoracion_respuesta">
+        <PropertyRef Name="id_caso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User__depart">
+    <End Role="departamento" Type="Self.departamento" Multiplicity="0..1" />
+    <End Role="caso" Type="Self.caso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="caso">
+        <PropertyRef Name="id_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cliente__estatus__66603565">
+    <End Role="Esta_Usua_clien" Type="Self.Esta_Usua_clien" Multiplicity="0..1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Esta_Usua_clien">
+        <PropertyRef Name="CodTip_U_C" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__producto___id_cl__5CD6CB2B">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="producto_cliente" Type="Self.producto_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="producto_cliente">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__valoracio__id_cl__6C190EBB">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="0..1" />
+    <End Role="valoracion_respuesta" Type="Self.valoracion_respuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="valoracion_respuesta">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuario__Id_depa__5AEE82B9">
+    <End Role="departamento" Type="Self.departamento" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="Id_departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuario__estatus__656C112C">
+    <End Role="Esta_Usua_clien" Type="Self.Esta_Usua_clien" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Esta_Usua_clien">
+        <PropertyRef Name="CodTip_U_C" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="estatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Operacion__idMod__59063A47">
+    <End Role="modulo" Type="Self.modulo" Multiplicity="0..1" />
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modulo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Operacion">
+        <PropertyRef Name="idModulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rol_Opera__idOpe__5812160E">
+    <End Role="Operacion" Type="Self.Operacion" Multiplicity="0..1" />
+    <End Role="Rol_Operacion" Type="Self.Rol_Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Rol_Operacion">
+        <PropertyRef Name="idOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__producto___id_pr__5BE2A6F2">
+    <End Role="producto" Type="Self.producto" Multiplicity="0..1" />
+    <End Role="producto_cliente" Type="Self.producto_cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="producto_cliente">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rol_Opera__idrol__571DF1D5">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="Rol_Operacion" Type="Self.Rol_Operacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Rol_Operacion">
+        <PropertyRef Name="idrol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__usuario__idroll__59FA5E80">
+    <End Role="Rol" Type="Self.Rol" Multiplicity="0..1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="idroll" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__valoracio__id_us__6E01572D">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="0..1" />
+    <End Role="valoracion_respuesta" Type="Self.valoracion_respuesta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="codigo" />
+      </Principal>
+      <Dependent Role="valoracion_respuesta">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ServiceAppEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="casoes" EntityType="Self.caso" />
+    <EntitySet Name="clientes" EntityType="Self.cliente" />
+    <EntitySet Name="departamentoes" EntityType="Self.departamento" />
+    <EntitySet Name="Esta_Usua_clien" EntityType="Self.Esta_Usua_clien" />
+    <EntitySet Name="Estatus" EntityType="Self.Estatu" />
+    <EntitySet Name="moduloes" EntityType="Self.modulo" />
+    <EntitySet Name="Operacions" EntityType="Self.Operacion" />
+    <EntitySet Name="productoes" EntityType="Self.producto" />
+    <EntitySet Name="producto_cliente" EntityType="Self.producto_cliente" />
+    <EntitySet Name="quejas" EntityType="Self.queja" />
+    <EntitySet Name="reclamoes" EntityType="Self.reclamo" />
+    <EntitySet Name="Relevancias" EntityType="Self.Relevancia" />
+    <EntitySet Name="Rols" EntityType="Self.Rol" />
+    <EntitySet Name="Rol_Operacion" EntityType="Self.Rol_Operacion" />
+    <EntitySet Name="solucions" EntityType="Self.solucion" />
+    <EntitySet Name="Tipo_Caso" EntityType="Self.Tipo_Caso" />
+    <EntitySet Name="usuarios" EntityType="Self.usuario" />
+    <EntitySet Name="valoracion_respuesta" EntityType="Self.valoracion_respuesta" />
+    <AssociationSet Name="FK__caso__codigo_usu__60A75C0F" Association="Self.FK__caso__codigo_usu__60A75C0F">
+      <End Role="usuario" EntitySet="usuarios" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caso__estatus__6A30C649" Association="Self.FK__caso__estatus__6A30C649">
+      <End Role="Estatus" EntitySet="Estatus" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caso__id_cliente__5DCAEF64" Association="Self.FK__caso__id_cliente__5DCAEF64">
+      <End Role="cliente" EntitySet="clientes" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caso__id_queja__5FB337D6" Association="Self.FK__caso__id_queja__5FB337D6">
+      <End Role="queja" EntitySet="quejas" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caso__id_reclamo__5EBF139D" Association="Self.FK__caso__id_reclamo__5EBF139D">
+      <End Role="reclamo" EntitySet="reclamoes" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caso__relevancia__6B24EA82" Association="Self.FK__caso__relevancia__6B24EA82">
+      <End Role="Relevancias" EntitySet="Relevancias" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caso__tipo_caso__693CA210" Association="Self.FK__caso__tipo_caso__693CA210">
+      <End Role="Tipo_Caso" EntitySet="Tipo_Caso" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__solucion__id_cas__6754599E" Association="Self.FK__solucion__id_cas__6754599E">
+      <End Role="caso" EntitySet="casoes" />
+      <End Role="solucion" EntitySet="solucions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__valoracio__id_ca__6D0D32F4" Association="Self.FK__valoracio__id_ca__6D0D32F4">
+      <End Role="caso" EntitySet="casoes" />
+      <End Role="valoracion_respuesta" EntitySet="valoracion_respuesta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User__depart" Association="Self.FK_User__depart">
+      <End Role="departamento" EntitySet="departamentoes" />
+      <End Role="caso" EntitySet="casoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cliente__estatus__66603565" Association="Self.FK__cliente__estatus__66603565">
+      <End Role="Esta_Usua_clien" EntitySet="Esta_Usua_clien" />
+      <End Role="cliente" EntitySet="clientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__producto___id_cl__5CD6CB2B" Association="Self.FK__producto___id_cl__5CD6CB2B">
+      <End Role="cliente" EntitySet="clientes" />
+      <End Role="producto_cliente" EntitySet="producto_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__valoracio__id_cl__6C190EBB" Association="Self.FK__valoracio__id_cl__6C190EBB">
+      <End Role="cliente" EntitySet="clientes" />
+      <End Role="valoracion_respuesta" EntitySet="valoracion_respuesta" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuario__Id_depa__5AEE82B9" Association="Self.FK__usuario__Id_depa__5AEE82B9">
+      <End Role="departamento" EntitySet="departamentoes" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuario__estatus__656C112C" Association="Self.FK__usuario__estatus__656C112C">
+      <End Role="Esta_Usua_clien" EntitySet="Esta_Usua_clien" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Operacion__idMod__59063A47" Association="Self.FK__Operacion__idMod__59063A47">
+      <End Role="modulo" EntitySet="moduloes" />
+      <End Role="Operacion" EntitySet="Operacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rol_Opera__idOpe__5812160E" Association="Self.FK__Rol_Opera__idOpe__5812160E">
+      <End Role="Operacion" EntitySet="Operacions" />
+      <End Role="Rol_Operacion" EntitySet="Rol_Operacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__producto___id_pr__5BE2A6F2" Association="Self.FK__producto___id_pr__5BE2A6F2">
+      <End Role="producto" EntitySet="productoes" />
+      <End Role="producto_cliente" EntitySet="producto_cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rol_Opera__idrol__571DF1D5" Association="Self.FK__Rol_Opera__idrol__571DF1D5">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="Rol_Operacion" EntitySet="Rol_Operacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK__usuario__idroll__59FA5E80" Association="Self.FK__usuario__idroll__59FA5E80">
+      <End Role="Rol" EntitySet="Rols" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__valoracio__id_us__6E01572D" Association="Self.FK__valoracio__id_us__6E01572D">
+      <End Role="usuario" EntitySet="usuarios" />
+      <End Role="valoracion_respuesta" EntitySet="valoracion_respuesta" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ServiceAppDemo.Models.caso>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.usuario.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatu.DescripEst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.queja.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reclamo.id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Relevancia1.DescripRel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo_Caso1.DescripTip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departamento.descripcion)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatu.DescripEst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.queja.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reclamo.id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Relevancia1.DescripRel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo_Caso1.DescripTip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departamento.descripcion)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>*@
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model ServiceAppDemo.Models.valoracion_respuesta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>valoracion_respuesta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.caso.codigo_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.caso.codigo_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6df75f6dd5a340f0b59472b1b23f2625" Name="Diagram1">
+        <EntityTypeShape EntityType="ServiceAppModel.caso" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.cliente" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.departamento" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Esta_Usua_clien" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Estatu" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.modulo" Width="1.5" PointX="1.5" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Operacion" Width="1.5" PointX="3.75" PointY="27.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.producto" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.producto_cliente" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.queja" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.reclamo" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Relevancia" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Rol" Width="1.5" PointX="3.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Rol_Operacion" Width="1.5" PointX="6" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.solucion" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.Tipo_Caso" Width="1.5" PointX="0.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.usuario" Width="1.5" PointX="6" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiceAppModel.valoracion_respuesta" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__codigo_usu__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__estatus__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__id_cliente__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__id_queja__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__id_reclamo__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__relevancia__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__caso__tipo_caso__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__solucion__id_cas__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__valoracio__id_ca__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK_User__depart" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__cliente__estatus__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__producto___id_cl__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__valoracio__id_cl__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__usuario__Id_depa__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__usuario__estatus__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__Operacion__idMod__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__Rol_Opera__idOpe__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__producto___id_pr__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__Rol_Opera__idrol__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__usuario__idroll__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiceAppModel.FK__valoracio__id_us__6E01572D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

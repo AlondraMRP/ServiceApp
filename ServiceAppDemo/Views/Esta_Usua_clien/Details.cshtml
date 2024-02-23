@@ -1,0 +1,26 @@
+﻿@model ServiceAppDemo.Models.Esta_Usua_clien
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Esta_Usua_clien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DescripTip_U_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescripTip_U_C)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CodTip_U_C }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

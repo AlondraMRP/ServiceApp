@@ -1,0 +1,99 @@
+﻿@model ServiceAppDemo.Models.caso
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>caso</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatu.DescripEst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatu.DescripEst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.queja.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.queja.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reclamo.id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reclamo.id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Relevancia1.DescripRel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Relevancia1.DescripRel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Caso1.DescripTip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Caso1.DescripTip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departamento.descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departamento.descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
